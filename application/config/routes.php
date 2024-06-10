@@ -56,6 +56,10 @@ $route['translate_uri_dashes'] = FALSE;
 // deklarasi route
 $route['user'] = 'user/user';
 $route['login'] = 'user/login';
+$route['datagejala'] = 'admin/datagejala';
+$route['datapenyakit'] = 'admin/datapenyakit';
+$route['basisaturan'] = 'admin/basisaturan';
+$route['riwayat'] = 'admin/riwayat';
 
 
 

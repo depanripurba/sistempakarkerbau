@@ -21,11 +21,50 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+		$data['judul'] = "dashboard";
 		$this->load->view('template/header');
-		$this->load->view('template/menu');
-		$this->load->view('blank');
+		$this->load->view('template/menu',$data);
+		$this->load->view('admin/dashboard');
 		$this->load->view('template/footer');
 		// }
 	}
-	
+	public function datagejala()
+	{
+		$data['judul'] = "Data Gejala";
+		$this->load->view('template/header');
+		$this->load->view('template/menu',$data);
+		$this->load->view('admin/datagejala');
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function datapenyakit()
+	{
+		$data['judul'] = "Data Gejala";
+		$this->load->view('template/header');
+		$this->load->view('template/menu',$data);
+		$this->load->view('admin/datapenyakit');
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function basisaturan()
+	{
+		$data['judul'] = "Data Gejala";
+		$this->load->view('template/header');
+		$this->load->view('template/menu',$data);
+		$this->load->view('admin/basisaturan');
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function riwayat()
+	{
+		$data['judul'] = "Data Gejala";
+		$this->load->view('template/header');
+		$this->load->view('template/menu',$data);
+		$this->load->view('admin/riwayat');
+		$this->load->view('template/footer');
+		// }
+	}
 }
