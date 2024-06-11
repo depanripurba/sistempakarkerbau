@@ -25,22 +25,22 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('datapenyakit') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-medkit"></i>
             <span>Data Penyakit</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('basisaturan') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-sitemap"></i>
             <span>Basis Aturan </span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('riwayat') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-stethoscope"></i>
             <span>Riwayat Konsultasi </span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('logout') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw  fa-unlock"></i>
             <span>Logout</span></a>
     </li>
 
@@ -77,7 +77,7 @@
                     <span>Tanggal</span>
                     <span><a href="">Refresh</a></span>
                 <?php else : ?>
-                    <span>Tes</span>
+                    <span><?=$judul?></span>
                     <span></span>
                     <span><a href=""></a></span>
                 <?php endif ?>

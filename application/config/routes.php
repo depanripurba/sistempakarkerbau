@@ -54,7 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // deklarasi route
-$route['user'] = 'user/user';
 $route['login'] = 'user/login';
 $route['datagejala'] = 'admin/datagejala';
 $route['datapenyakit'] = 'admin/datapenyakit';
