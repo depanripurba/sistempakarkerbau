@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Kode</th>
@@ -33,7 +33,7 @@
                                     </ul>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" onclick="confirm('Yakin Ingin Menghapus Data ini?')" href="<?= site_url('Master/hapuspenyakit/')?>">Delete</a> <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a></td>
+                                <button data-url="<?= base_url('deletepenyakit/' . $data->kode_penyakit) ?>" id="hapusdata" class="btn btn-danger" >Delete</button> <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

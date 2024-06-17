@@ -14,12 +14,12 @@ class Basis_model extends CI_Model
 	public function getAllData()
 	{
 		$this->db->order_by('id', 'ASC');
-		$data = $this->db->get('tbl_basispengetahuan')->result();
+		$data = $this->db->get('tbl_basisaturan')->result();
 		return $data;
 	}
 	public function selectBasis($id)
 	{
-		$selected = $this->db->get_where('tbl_basispengetahuan', array('id' => $id))->row_array();
+		$selected = $this->db->get_where('tbl_basisaturan', array('id' => $id))->row_array();
 		return $selected;
 	}
 
@@ -37,13 +37,13 @@ class Basis_model extends CI_Model
 			'nilai' => $nilai,
 		);
 
-		return $this->db->insert('tbl_basispengetahuan', $data);
+		return $this->db->insert('tbl_basisaturan', $data);
 	}
 
 	public function hapusdata($id)
 	{
 		// $this->db->delete('pengetahuan', array('kode_penyakit' => $kodepenyakit));
-		return $this->db->delete('tbl_basispengetahuan', array('id' => $id));
+		return $this->db->delete('tbl_basisaturan', array('id' => $id));
 	}
 
 
@@ -53,7 +53,7 @@ class Basis_model extends CI_Model
 			'nilai' => $_POST['nilai'],
 		);
 		$this->db->where('id', $_POST['id']);
-		return $this->db->update('tbl_basispengetahuan', $data);
+		return $this->db->update('tbl_basisaturan', $data);
 	}
 
 	

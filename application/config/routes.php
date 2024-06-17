@@ -57,10 +57,14 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'user/login';
 $route['editpenyakit/(:any)'] = 'admin/editpenyakit/$1';
 $route['editdatagejala/(:any)'] = 'admin/editdatagejala/$1';
+$route['editbasisaturan/(:any)'] = 'admin/editbasisaturan/$1';
+$route['deletepenyakit/(:any)'] = 'admin/deletepenyakit/$1';
+$route['deletebasis/(:any)'] = 'admin/deletebasis/$1';
 $route['auth'] = 'login/index';
 $route['datagejala'] = 'admin/datagejala';
 $route['datapenyakit'] = 'admin/datapenyakit';
 $route['basisaturan'] = 'admin/basisaturan';
+$route['tambahbasisaturan'] = 'admin/tambahbasisaturan';
 $route['riwayat'] = 'admin/riwayat';
 
 

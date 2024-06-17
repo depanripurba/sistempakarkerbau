@@ -14,8 +14,8 @@ class Admin extends CI_Controller
 		// 	// Load Model
 		$this->load->model('Penyakit_model');
 		$this->load->model('Gejala_model');
+		$this->load->model('Basis_model');
 		// 	$this->load->model('Pasien_model');
-		// 	$this->load->model('Basis_model');
 	}
 
 
@@ -90,6 +90,12 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function deletegejala($id)
+	{
+		$this->Gejala_model->deleteGejala($id);
+		redirect('/datagejala');
+	}
+
 	public function datapenyakit()
 	{
 		$data['judul'] = "Data Penyakit";
@@ -140,6 +146,14 @@ class Admin extends CI_Controller
 			redirect(base_url('datapenyakit'));
 		}
 	}
+	public function deletepenyakit($id)
+	{
+		$cek = $this->Penyakit_model->hapusdata($id);
+		if ($cek) {
+			$this->session->set_flashdata('deleted', 'berhasil dihapus');
+			redirect(base_url('datapenyakit'));
+		}
+	}
 
 
 
@@ -147,11 +161,63 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = "Basis Aturan";
 		$data['aktif'] = "rule";
+		$data['basis'] = $this->Basis_model->getAllData();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/basisaturan');
+		$this->load->view('admin/basisaturan', $data);
 		$this->load->view('template/footer');
 		// }
+	}
+
+	public function tambahbasisaturan()
+	{
+		$data['judul'] = "Form Tambah Basis Aturan";
+		$data['aktif'] = "rule";
+		$data['penyakit'] = $this->Penyakit_model->getAllspes();
+		$data['gejala'] = $this->Gejala_model->getAllspes();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/tambahbasisaturan', $data);
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function posttambahbasis()
+	{
+		$cek = $this->Basis_model->insertData($this->input->post('kode_gejala'), $this->input->post('kode_penyakit'), $this->input->post('nilai'));
+		if ($cek) {
+			$this->session->set_flashdata('berhasil', 'Basis pengetahuan berhasil di tambahkan');
+			redirect(base_url('basisaturan'));
+		}
+	}
+	public function editbasisaturan($id)
+	{
+		$data['judul'] = "Form Ubah Basis Aturan";
+		$data['aktif'] = "rule";
+		$data['id'] = $id;
+		$data['basis'] = $this->Basis_model->selectBasis($id);
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/editbasisaturan', $data);
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function postupdatebasis()
+	{
+		$cek = $this->Basis_model->updatedata();
+		if ($cek) {
+			$this->session->set_flashdata('berhasil', 'Basis Pengetahuan Berhasil di update');
+			redirect(base_url('basisaturan'));
+		}
+	}
+	public function deletebasis($id)
+	{
+		$cek = $this->Basis_model->hapusdata($id);
+		if ($cek) {
+			$this->session->set_flashdata('deleted', 'berhasil dihapus');
+			redirect(base_url('basisaturan'));
+		}
 	}
 
 	public function riwayat()
