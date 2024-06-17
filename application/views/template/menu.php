@@ -17,29 +17,30 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+
     <!-- Heading -->
-    <li class="nav-item">
+    <li class="nav-item <?=$aktif==='gejala'?'active':''?>">
         <a class="nav-link" href="<?= base_url('datagejala') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Data Gejala</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <?=$aktif==='penyakit'?'active':''?>">
         <a class="nav-link" href="<?= base_url('datapenyakit') ?>">
             <i class="fas fa-fw fa-medkit"></i>
             <span>Data Penyakit</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <?=$aktif==='rule'?'active':''?>">
         <a class="nav-link" href="<?= base_url('basisaturan') ?>">
             <i class="fas fa-fw fa-sitemap"></i>
             <span>Basis Aturan </span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <?=$aktif==='riwayat'?'active':''?>">
         <a class="nav-link" href="<?= base_url('riwayat') ?>">
             <i class="fas fa-fw fa-stethoscope"></i>
             <span>Riwayat Konsultasi </span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('logout') ?>">
+        <a class="nav-link" href="<?= base_url('login/logout') ?>">
             <i class="fas fa-fw  fa-unlock"></i>
             <span>Logout</span></a>
     </li>

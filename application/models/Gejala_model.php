@@ -26,7 +26,7 @@ class Gejala_model extends CI_Model
 	}
 
 	// Function Insert Data
-	public function insertGejala($data)
+	public function addGejala($data)
 	{
 		// Masukkan data ke dalam tabel database
 		$this->db->insert('tbl_gejala', $data);

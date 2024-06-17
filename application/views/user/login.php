@@ -39,22 +39,23 @@
                                 <div class="text-center">
                                     <img width="100px" src="<?= base_url('assets/img/admin.png') ?>" alt="">
                                     <h1 class="h5 text-gray-900 mb-4">Login Admin</h1>
+                                    <?=$this->session->flashdata('message');?>
                                 </div>
-                                <form class="user">
+                                <form class="user" action="<?=base_url('auth')?>" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username">
+                                        <input name="username" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                     </div>
 
                                     <div class="d-flex justify-content-between">
-                                        <a style="width: 100px;" href="index.html" class="btn btn-primary">
+                                        <button style="width: 100px;" type="submit" class="btn btn-primary">
                                             Login
-                                        </a>
-                                        <a style="width: 100px;" href="index.html" class="btn btn-secondary">
+                                        </button>
+                                        <button style="width: 100px;" type="reset"" class="btn btn-secondary">
                                             Cancel
-                                        </a>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

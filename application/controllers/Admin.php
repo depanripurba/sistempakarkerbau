@@ -4,26 +4,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
-	// public function __construct()
-	// {
-	// 	parent::__construct();
-	// 	// Jika tidak ada user yang berhasil login, kembalikan ke halaman login
-	// 	if (!$this->session->userdata('username') || $this->session->userdata('role')!=='Admin') {
-	// 		redirect('auth');
-	// 	}
-	// 	// Load Model
-	// 	$this->load->model('Penyakit_model');
-	// 	$this->load->model('Gejala_model');
-	// 	$this->load->model('Pasien_model');
-	// 	$this->load->model('Basis_model');
-	// }
+	public function __construct()
+	{
+		parent::__construct();
+		// Jika tidak ada user yang berhasil login, kembalikan ke halaman login
+		if (!$this->session->userdata('username') || !$this->session->userdata('nama')) {
+			redirect('login');
+		}
+		// 	// Load Model
+		$this->load->model('Penyakit_model');
+		$this->load->model('Gejala_model');
+		// 	$this->load->model('Pasien_model');
+		// 	$this->load->model('Basis_model');
+	}
 
 
 	public function index()
 	{
 		$data['judul'] = "dashboard";
-		$this->load->view('template/header',$data);
-		$this->load->view('template/menu',$data);
+		$data['aktif'] = "home";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
 		$this->load->view('admin/dashboard');
 		$this->load->view('template/footer');
 		// }
@@ -31,28 +32,123 @@ class Admin extends CI_Controller
 	public function datagejala()
 	{
 		$data['judul'] = "Data Gejala";
-		$this->load->view('template/header',$data);
-		$this->load->view('template/menu',$data);
-		$this->load->view('admin/datagejala');
+		$data['aktif'] = "gejala";
+		$data['gejala'] = $this->Gejala_model->getAllGejala();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/datagejala', $data);
 		$this->load->view('template/footer');
 		// }
+	}
+	public function tambahdatagejala()
+	{
+		$data['judul'] = "Form Tambah Gejala";
+		$data['aktif'] = "gejala";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/tambahdatagejala');
+		$this->load->view('template/footer');
+		// }
+	}
+	public function postdatagejala()
+	{
+		$data = array(
+			'kode_gejala' => $_POST['kode_gejala'],
+			'nama_gejala' => $_POST['nama_gejala'],
+		);
+
+		$tambahgejala = $this->Gejala_model->addGejala($data);
+
+		if ($tambahgejala === null) {
+			redirect('/datagejala');
+		} else {
+			redirect('/tambahdatagejala');
+		}
+	}
+	public function editdatagejala($id)
+	{
+		$data['judul'] = "Form Edit Gejala";
+		$data['aktif'] = "gejala";
+		$data['selected'] = $this->Gejala_model->selectGejala($id);
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/editgejala', $data);
+		$this->load->view('template/footer');
+		// }
+	}
+	public function postupdategejala()
+	{
+		$data_to_update = array(
+			'nama_gejala' => $_POST['nama_gejala'],
+		);
+
+		$this->db->where('kode_gejala', $_POST['kode_gejala']);
+		$update = $this->db->update('tbl_gejala', $data_to_update);
+
+		if ($update) {
+			redirect('/datagejala');
+		}
 	}
 
 	public function datapenyakit()
 	{
 		$data['judul'] = "Data Penyakit";
-		$this->load->view('template/header',$data);
-		$this->load->view('template/menu',$data);
+		$data['aktif'] = "penyakit";
+		$data['penyakit'] = $this->Penyakit_model->getAllData();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
 		$this->load->view('admin/datapenyakit');
 		$this->load->view('template/footer');
 		// }
 	}
+	public function tambahdatapenyakit()
+	{
+		$data['judul'] = "Form Tambah Data Penyakit";
+		$data['aktif'] = "penyakit";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/tambahdatapenyakit');
+		$this->load->view('template/footer');
+		// }
+	}
+
+	public function postdatapenyakit()
+	{
+		$kodepenyakit = $_POST['kode_penyakit'];
+		$namapenyakit = $_POST['nama_penyakit'];
+		$solusi = $_POST['solusi'];
+		$cek = $this->Penyakit_model->insertData($kodepenyakit, $namapenyakit, $solusi);
+		if ($cek) {
+			redirect(base_url('datapenyakit'));
+		}
+	}
+	public function editpenyakit($id)
+	{
+		$data['dataedit'] = $this->Penyakit_model->ambildata($id);
+		$data['judul'] = "Form Edit Data Penyakit";
+		$data['aktif'] = "penyakit";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/editpenyakit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function updatepenyakit()
+	{
+		$cek = $this->Penyakit_model->updatedata();
+		if ($cek) {
+			redirect(base_url('datapenyakit'));
+		}
+	}
+
+
 
 	public function basisaturan()
 	{
 		$data['judul'] = "Basis Aturan";
-		$this->load->view('template/header',$data);
-		$this->load->view('template/menu',$data);
+		$data['aktif'] = "rule";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
 		$this->load->view('admin/basisaturan');
 		$this->load->view('template/footer');
 		// }
@@ -61,10 +157,16 @@ class Admin extends CI_Controller
 	public function riwayat()
 	{
 		$data['judul'] = "Riwayat Diagnosa";
-		$this->load->view('template/header',$data);
-		$this->load->view('template/menu',$data);
+		$data['aktif'] = "riwayat";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
 		$this->load->view('admin/riwayat');
 		$this->load->view('template/footer');
 		// }
+	}
+
+	public function buatpass()
+	{
+		var_dump(password_hash('admin', PASSWORD_DEFAULT));
 	}
 }
