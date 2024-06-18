@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nama_gejala">No Hp</label>
-                            <input name="hp" type="text" class="form-control" id="nama_gejala" placeholder="Nomor Hp...">
+                            <input name="no_hp" type="text" class="form-control" id="nama_gejala" placeholder="Nomor Hp...">
                         </div>
                         <div class="form-group">
                             <label for="nama_gejala">Alamat</label>

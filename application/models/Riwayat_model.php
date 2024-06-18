@@ -24,17 +24,16 @@ class Riwayat_model extends CI_Model
 	}
 
 	// Function Insert Data
-	public function insertData($kodegejala,$kodepenyakit, $nilai)
+	public function insertData($nama,$no_hp, $alamat,$namapenyakit,$hasil,$tanggal)
 	{
 		// Masukkan data ke dalam tabel database
-		$namagejala = $this->Gejala_model->selectGejala($kodegejala)['nama_gejala'];
-		$namapenyakit = $this->Penyakit_model->selectPenyakit($kodepenyakit)['nama_penyakit'];
 		$data = array(
-			'nama' => $kodegejala,
-			'no'=>$namagejala,
-            'kode_penyakit'=> $kodepenyakit,
+			'nama' => $nama,
+			'no_hp'=>$no_hp,
+            'alamat'=> $alamat,
 			'nama_penyakit'=>$namapenyakit,
-			'nilai' => $nilai,
+			'hasil_konsultasi' => $hasil,
+			'tanggal_konsultasi' => $tanggal,
 		);
 
 		return $this->db->insert('tbl_riwayat', $data);

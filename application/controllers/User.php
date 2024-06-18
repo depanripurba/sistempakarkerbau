@@ -9,6 +9,7 @@ class User extends CI_Controller
 		parent::__construct();
 		// $this->load->model('Penyakit_model');
 		$this->load->model('Gejala_model');
+		$this->load->model('Riwayat_model');
 		// $this->load->model('Basis_model');
 		// 	$this->load->model('Pasien_model');
 	}
@@ -38,6 +39,7 @@ class User extends CI_Controller
                 $newdata[$data] = $val;
             }
         }
+
         if (count($newdata) < 1) {
             redirect('diagnosa');
         }
@@ -136,17 +138,21 @@ class User extends CI_Controller
             }
             $inor++;
         }
+        $this->Riwayat_model->insertData($_POST['nama'],$_POST['no_hp'],$_POST['alamat'],$hasildiagnosakirim['namapenyakit'],$hasildiagnosakirim['nilaipeluang'],date('l, d-m-Y'));
         
         $this->session->set_userdata('hasildiagnosa', $hasildiagnosakirim);
 
-        $propertiview['judul'] = 'SISTEM PAKAR DIAGNOSA ENDOKRIN - DIAGNOSA USER';
-        $propertiview['aktif'] = 'Diagnosa Pasien';
+        // $propertiview['judul'] = 'SISTEM PAKAR DIAGNOSA ENDOKRIN - DIAGNOSA USER';
+        // $propertiview['aktif'] = 'Diagnosa Pasien';
         $propertiview['hasil'] = $hasildiagnosakirim;
-        $propertiview['user'] = $this->session->userdata();
-        $this->load->view('user/template/header', $propertiview);
-        $this->load->view('user/template/sidebar', $propertiview);
-        $this->load->view('user/hasildiagnosa', $propertiview);
-        $this->load->view('user/template/footer', $propertiview);
+        $propertiview['nama'] = $_POST['nama'];
+        $propertiview['no_hp'] = $_POST['no_hp'];
+        $propertiview['alamat'] = $_POST['alamat'];
+        // $this->load->view('user/template/header', $propertiview);
+        // $this->load->view('user/template/sidebar', $propertiview);
+        // $this->load->view('user/hasildiagnosa', $propertiview);
+        // $this->load->view('user/template/footer', $propertiview);
+        $this->load->view('user/hasildiagnosa',$propertiview);
     }
 
     private function forwadchaining($newdata)
