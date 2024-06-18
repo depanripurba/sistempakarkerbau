@@ -33,7 +33,7 @@ class User extends CI_Controller
             $this->session->unset_userdata('hasildiagnosa');
         }
         $newdata = [];
-        foreach ($_POST as $data => $val) {
+        foreach ($_POST['gejala'] as $data => $val) {
             if ($val == 1) {
                 $newdata[$data] = $val;
             }
@@ -59,7 +59,7 @@ class User extends CI_Controller
                 }
                 $indikator++;
             }
-            $this->db->from('tbl_basispengetahuan');
+            $this->db->from('tbl_basisaturan');
             $this->db->where($sqlquery);
             $hasiltemp = $this->db->get()->result();
 
@@ -155,7 +155,7 @@ class User extends CI_Controller
         $prediksipenyakit = [];
         foreach ($newdata as $result => $value) {
             $this->db->select('kode_penyakit');
-            $ektrak = $this->db->get_where('tbl_basispengetahuan', array('kode_gejala' => $result))->result();
+            $ektrak = $this->db->get_where('tbl_basisaturan', array('kode_gejala' => $result))->result();
             foreach ($ektrak as $zip) {
                 $prediksipenyakit[] = $zip->kode_penyakit;
             }

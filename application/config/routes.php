@@ -61,6 +61,7 @@ $route['editpenyakit/(:any)'] = 'admin/editpenyakit/$1';
 $route['editdatagejala/(:any)'] = 'admin/editdatagejala/$1';
 $route['editbasisaturan/(:any)'] = 'admin/editbasisaturan/$1';
 $route['deletepenyakit/(:any)'] = 'admin/deletepenyakit/$1';
+$route['deletegejala/(:any)'] = 'admin/deletegejala/$1';
 $route['deletebasis/(:any)'] = 'admin/deletebasis/$1';
 $route['auth'] = 'login/index';
 $route['datagejala'] = 'admin/datagejala';

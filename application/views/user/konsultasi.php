@@ -61,7 +61,7 @@
                                 <?php foreach ($gejala as $g) : ?>
                                     <tr>
                                         <td style="width: 40px;">
-                                            <input name="<?= $g['kode_gejala'] ?>" value="1" style="cursor:pointer" type="checkbox">
+                                            <input name="gejala[<?= $g['kode_gejala'] ?>]" value="1" style="cursor:pointer" type="checkbox">
                                         </td>
                                         <td>
                                             <?= $g['nama_gejala'] ?>
