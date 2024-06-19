@@ -30,7 +30,69 @@
     </center>
     <hr>
     <div class="container">
-        var_dump()
+        <?php var_dump($hasil) ?>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Nama</td>
+                    <td>:</td>
+                    <td>Depanri Purba</td>
+                </tr>
+                <tr>
+                    <td>Nomor Hape</td>
+                    <td>:</td>
+                    <td>081396486060</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>:</td>
+                    <td>081396486060</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h5>Gejala yang dipilih</h5>
+        <table>
+            <tbody>
+                <?php $no = 1; ?>
+                <?php foreach ($hasil['gejalacentang'] as $d) : ?>
+                    <tr>
+                        <td><?=$no?></td>
+                        <td><?=$d->kode_gejala?></td>
+                        <td><?=$d->nama_gejala?></td>
+                    </tr>
+                    <?php $no++ ?>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <hr>
+        <h5>Hasil Konsultasi</h5>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        Nama Penyakit
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        <?=$hasil['namapenyakit']?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nilai Gejala
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        <?=$hasil['nilai']?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 
