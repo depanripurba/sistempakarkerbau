@@ -1,10 +1,13 @@
 <!-- Sidebar -->
+<?php
+date_default_timezone_set('Asia/Jakarta');
+?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-            <img width="50" src="<?=base_url('assets/img/kerbau.png')?>" alt="">
+            <img width="50" src="<?= base_url('assets/img/kerbau.png') ?>" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">Pakar Kerbau</div>
     </a>
@@ -19,22 +22,22 @@
 
 
     <!-- Heading -->
-    <li class="nav-item <?=$aktif==='gejala'?'active':''?>">
+    <li class="nav-item <?= $aktif === 'gejala' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('datagejala') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Data Gejala</span></a>
     </li>
-    <li class="nav-item <?=$aktif==='penyakit'?'active':''?>">
+    <li class="nav-item <?= $aktif === 'penyakit' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('datapenyakit') ?>">
             <i class="fas fa-fw fa-medkit"></i>
             <span>Data Penyakit</span></a>
     </li>
-    <li class="nav-item <?=$aktif==='rule'?'active':''?>">
+    <li class="nav-item <?= $aktif === 'rule' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('basisaturan') ?>">
             <i class="fas fa-fw fa-sitemap"></i>
             <span>Basis Aturan </span></a>
     </li>
-    <li class="nav-item <?=$aktif==='riwayat'?'active':''?>">
+    <li class="nav-item <?= $aktif === 'riwayat' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('riwayat') ?>">
             <i class="fas fa-fw fa-stethoscope"></i>
             <span>Riwayat Konsultasi </span></a>
@@ -75,10 +78,10 @@
             <div style="width: 100%;" class="d-flex justify-content-between">
                 <?php if ($judul === "dashboard") : ?>
                     <span>Welcome Back</span>
-                    <span>Tanggal</span>
+                    <span><?= date("F j, Y, H:i:s"); ?></span>
                     <span><a href="">Refresh</a></span>
                 <?php else : ?>
-                    <span><?=$judul?></span>
+                    <span><?= $judul ?></span>
                     <span></span>
                     <span><a href=""></a></span>
                 <?php endif ?>

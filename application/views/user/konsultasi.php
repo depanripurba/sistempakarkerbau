@@ -39,15 +39,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="kode_gejala">Nama</label>
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama...">
+                            <input required type="text" name="nama" id="nama" class="form-control" placeholder="Nama...">
                         </div>
                         <div class="form-group">
                             <label for="nama_gejala">No Hp</label>
-                            <input name="no_hp" type="text" class="form-control" id="nama_gejala" placeholder="Nomor Hp...">
+                            <input required name="no_hp" type="text" class="form-control" id="nama_gejala" placeholder="Nomor Hp...">
                         </div>
                         <div class="form-group">
                             <label for="nama_gejala">Alamat</label>
-                            <input name="alamat" type="text" class="form-control" id="Alamat" placeholder="alamat">
+                            <input required name="alamat" type="text" class="form-control" id="Alamat" placeholder="alamat">
                         </div>
                     </div>
                 </div>

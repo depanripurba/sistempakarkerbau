@@ -21,16 +21,15 @@
 
 </head>
 
-<body>
+<body style="color: black;">
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         <h4 class="m-0 font-weight-bold text-primary">Halaman Konsultasi Pengunjung</h4>
     </nav>
     <center>
-        <h5 class="text-success mb-3">Hasil Diagnosa</h5>
+        <h5 class="mb-3">Hasil Diagnosa</h5>
     </center>
     <hr>
     <div class="container">
-        <?php var_dump($hasil) ?>
         <table>
             <tbody>
                 <tr>
@@ -39,7 +38,7 @@
                     <td>Depanri Purba</td>
                 </tr>
                 <tr>
-                    <td>Nomor Hape</td>
+                    <td>Nomor Hp</td>
                     <td>:</td>
                     <td>081396486060</td>
                 </tr>
@@ -57,17 +56,17 @@
                 <?php $no = 1; ?>
                 <?php foreach ($hasil['gejalacentang'] as $d) : ?>
                     <tr>
-                        <td><?=$no?></td>
-                        <td><?=$d->kode_gejala?></td>
-                        <td><?=$d->nama_gejala?></td>
+                        <td><?= $no ?></td>
+                        <td><?= $d->kode_gejala ?></td>
+                        <td><?= $d->nama_gejala ?></td>
                     </tr>
                     <?php $no++ ?>
                 <?php endforeach ?>
             </tbody>
         </table>
         <hr>
-        <h5>Hasil Konsultasi</h5>
-        <table>
+        <h5 class="text-success">Hasil Konsultasi</h5>
+        <table class="text-success">
             <tbody>
                 <tr>
                     <td>
@@ -77,7 +76,7 @@
                         :
                     </td>
                     <td>
-                        <?=$hasil['namapenyakit']?>
+                        <?= $hasil['namapenyakit'] ?>
                     </td>
                 </tr>
                 <tr>
@@ -88,12 +87,29 @@
                         :
                     </td>
                     <td>
-                        <?=$hasil['nilai']?>
+                        <?= $hasil['nilaipeluang'] ?> || <?= $hasil['persenpeluang'] ?> %
                     </td>
                 </tr>
             </tbody>
         </table>
+        <hr>
+        <h5>Solusi</h5>
+        <ul>
+            <?php
+            $solusi = $hasil['solusi'];
+            $solusiArr = explode("-", $solusi);
+
+            for ($i = 1; $i < count($solusiArr); $i++) {
+                echo "<li>" . $solusiArr[$i] . "</li>";
+            }
+            ?>
+        </ul>
     </div>
+    <div class="d-flex flex-row justify-content-around">
+        <a class="btn btn-primary" href="<?=base_url('konsultasi')?>">Konsultasi Kembali</a>
+        <a class="btn btn-danger" href="<?=base_url('cetak')?>">Cetak</a>
+    </div>
+    <div class="m-3"></div>
 
 
 

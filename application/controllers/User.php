@@ -41,7 +41,7 @@ class User extends CI_Controller
         }
 
         if (count($newdata) < 1) {
-            redirect('diagnosa');
+            redirect('konsultasi');
         }
         //proses filterisasi
         $kemungkinanpenyakit = $this->forwadchaining($newdata);
