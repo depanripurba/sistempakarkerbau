@@ -15,7 +15,7 @@ class Admin extends CI_Controller
 		$this->load->model('Penyakit_model');
 		$this->load->model('Gejala_model');
 		$this->load->model('Basis_model');
-		// 	$this->load->model('Pasien_model');
+		$this->load->model('Riwayat_model');
 	}
 
 
@@ -224,9 +224,10 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = "Riwayat Diagnosa";
 		$data['aktif'] = "riwayat";
+		$data['riwayat'] = $this->Riwayat_model->getAllData();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/riwayat');
+		$this->load->view('admin/riwayat',$data);
 		$this->load->view('template/footer');
 		// }
 	}

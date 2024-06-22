@@ -7,10 +7,11 @@ class Generate extends CI_Controller
 {
     public function index()
     {
-
         $this->load->library('pdf');
-        $this->pdf->setPaper('A4', 'landscape');
-        $this->pdf->filename = "Laporan-Dompdf-Codeigniter.pdf";
-        $this->pdf->load_view('tes');
+        $this->pdf->set_option('isRemoteEnabled',true);  
+        $customPaper = array(0,0,700,700);
+        $this->pdf->setPaper($customPaper, 'portrait');
+        $this->pdf->filename = "laporandiagnosa.pdf";
+        $this->pdf->load_view('user/printhasil');
     }
 }

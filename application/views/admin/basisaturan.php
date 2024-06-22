@@ -25,7 +25,7 @@
                             <td><?= $bas->kode_gejala ?></td>
                             <td><?= $bas->nama_gejala ?></td>
                             <td><?= $bas->nilai ?></td>
-                            <td><button data-url="<?= base_url('deletebasis/' . $bas->id) ?>" id="hapusdata" class="btn btn-danger">Hapus</button> <a href="<?=base_url('editbasisaturan/'.$bas->id)?>" class="btn btn-primary">Edit</a></td>
+                            <td style="width: 200px;"><button data-url="<?= base_url('deletebasis/' . $bas->id) ?>" id="hapusdata" class="btn btn-danger">Hapus</button> <a href="<?=base_url('editbasisaturan/'.$bas->id)?>" class="btn btn-primary">Edit</a></td>
                         </tr>
                         <?php endforeach ?>
                     </tbody>

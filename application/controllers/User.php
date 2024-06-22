@@ -128,6 +128,9 @@ class User extends CI_Controller
             break;
         }
         $hasildiagnosakirim['gejalacentang'] = $gejalacentang;
+        $hasildiagnosakirim['nama'] = $_POST['nama'];
+        $hasildiagnosakirim['no_hp'] = $_POST['no_hp'];
+        $hasildiagnosakirim['alamat'] = $_POST['alamat'];
         $stringjson = "";
         $inor = 0;
         foreach ($newdata as $indi => $ng) {

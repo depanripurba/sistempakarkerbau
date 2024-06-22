@@ -107,7 +107,7 @@
     </div>
     <div class="d-flex flex-row justify-content-around">
         <a class="btn btn-primary" href="<?=base_url('konsultasi')?>">Konsultasi Kembali</a>
-        <a class="btn btn-danger" href="<?=base_url('cetak')?>">Cetak</a>
+        <a class="btn btn-danger" href="<?=base_url('generate')?>">Cetak</a>
     </div>
     <div class="m-3"></div>
 

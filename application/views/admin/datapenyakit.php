@@ -21,19 +21,20 @@
                                 <td><?= $data->kode_penyakit ?></td>
                                 <td><?= $data->nama_penyakit ?></td>
                                 <td>
-                                    <ul style="padding: 0 10px;line-height:0.7">
+                                    <ul style="padding: 0 10px;line-height:1.6">
                                         <?php
                                         $solusi = $data->solusi;
                                         $solusiArr = explode("-", $solusi);
 
                                         for ($i = 1; $i < count($solusiArr); $i++) {
-                                            echo "<li>" . $solusiArr[$i] . "</li></br>";
+                                            echo "<li>" . $solusiArr[$i] . "</li>";
                                         }
                                         ?>
                                     </ul>
                                 </td>
-                                <td>
-                                <button data-url="<?= base_url('deletepenyakit/' . $data->kode_penyakit) ?>" id="hapusdata" class="btn btn-danger" >Delete</button> <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a></td>
+                                <td style="width: 200px;">
+                                    <button data-url="<?= base_url('deletepenyakit/' . $data->kode_penyakit) ?>" id="hapusdata" class="btn btn-danger">Delete</button> <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
