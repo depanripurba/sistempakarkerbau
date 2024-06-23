@@ -13,6 +13,7 @@ class Gejala_model extends CI_Model
 	public function getAllGejala()
 	{
 		// Query untuk mengambil semua data dari tabel
+		$this->db->order_by('kode_gejala', 'ASC');
 		$query = $this->db->get('tbl_gejala');
 		// Mengembalikan hasil query dalam bentuk array
 		return $query->result_array();
@@ -45,6 +46,10 @@ class Gejala_model extends CI_Model
 
 		// Mengembalikan jumlah baris yang terpengaruh oleh operasi penghapusan
 		return $this->db->affected_rows();
+	}
+	public function hitung()
+	{
+		return $this->db->count_all('tbl_gejala');
 	}
 	public function getcode()
 	{

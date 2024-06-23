@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Jakarta');
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('konsultasi')?>">
         <div class="sidebar-brand-icon">
             <img width="50" src="<?= base_url('assets/img/kerbau.png') ?>" alt="">
         </div>
@@ -22,9 +22,14 @@ date_default_timezone_set('Asia/Jakarta');
 
 
     <!-- Heading -->
+    <li class="nav-item <?= $aktif === 'home' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('admin') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
     <li class="nav-item <?= $aktif === 'gejala' ? 'active' : '' ?>">
         <a class="nav-link" href="<?= base_url('datagejala') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-list-alt"></i>
             <span>Data Gejala</span></a>
     </li>
     <li class="nav-item <?= $aktif === 'penyakit' ? 'active' : '' ?>">
@@ -41,6 +46,11 @@ date_default_timezone_set('Asia/Jakarta');
         <a class="nav-link" href="<?= base_url('riwayat') ?>">
             <i class="fas fa-fw fa-stethoscope"></i>
             <span>Riwayat Konsultasi </span></a>
+    </li>
+    <li class="nav-item <?= $aktif === 'profil' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('profil') ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profil </span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login/logout') ?>">

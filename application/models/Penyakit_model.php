@@ -71,6 +71,10 @@ class Penyakit_model extends CI_Model
 		$query = $this->db->get('tbl_penyakit');
 		return $query->num_rows();
 	}
+	public function hitung()
+	{
+		return $this->db->count_all('tbl_penyakit');
+	}
 	public function getcode()
 	{
 		return $this->depalgoritma('P00');

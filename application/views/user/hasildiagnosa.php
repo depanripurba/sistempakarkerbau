@@ -56,8 +56,8 @@
                 <?php $no = 1; ?>
                 <?php foreach ($hasil['gejalacentang'] as $d) : ?>
                     <tr>
-                        <td><?= $no ?></td>
-                        <td><?= $d->kode_gejala ?></td>
+                        <td><?= $no ?>.</td>
+                        <td><?= $d->kode_gejala ?>=></td>
                         <td><?= $d->nama_gejala ?></td>
                     </tr>
                     <?php $no++ ?>

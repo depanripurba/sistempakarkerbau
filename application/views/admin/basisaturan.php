@@ -9,7 +9,7 @@
                 <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Kode Penyakit</th>
+                            <th>Nomor</th>
                             <th>Nama Penyakit</th>
                             <th>Kode Gejala</th>
                             <th>Nama Gejala</th>
@@ -18,15 +18,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php $nomor = 1; ?>
                     <?php foreach ($basis as $bas) : ?>
                         <tr>
-                            <td><?= $bas->kode_penyakit ?></td>
+                            <td><?= $nomor ?></td>
                             <td><?= $bas->nama_penyakit ?></td>
                             <td><?= $bas->kode_gejala ?></td>
                             <td><?= $bas->nama_gejala ?></td>
                             <td><?= $bas->nilai ?></td>
                             <td style="width: 200px;"><button data-url="<?= base_url('deletebasis/' . $bas->id) ?>" id="hapusdata" class="btn btn-danger">Hapus</button> <a href="<?=base_url('editbasisaturan/'.$bas->id)?>" class="btn btn-primary">Edit</a></td>
                         </tr>
+                        <?php $nomor++ ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>

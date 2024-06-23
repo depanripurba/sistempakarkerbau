@@ -25,8 +25,8 @@
 
     <div class="container d-flex justify-content-between">
         <div class="p-3">
-            <a class="text-white m-2" href="">Beranda</a>
-            <a class="text-white" href="">Tentang</a>
+            <!-- <a class="text-white m-2" href="">Beranda</a>
+            <a class="text-white" href="">Tentang</a> -->
         </div>
         <div class="p-3">
             <a href="<?=base_url('konsultasi')?>" class="btn btn-success">Mulai Konsultasi</a>

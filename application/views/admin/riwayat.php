@@ -2,7 +2,7 @@
 <div class="container-fluid bg-red">
     <div class="card">
         <div class="card-header">
-            <a href="<?= base_url('admin/tambahdatagejala') ?>" class="btn btn-primary">Tambah</a>
+            <a href="<?= base_url('cetakriwayat') ?>" class="btn btn-primary">Cetak</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

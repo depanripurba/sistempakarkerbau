@@ -69,6 +69,8 @@ $route['datapenyakit'] = 'admin/datapenyakit';
 $route['basisaturan'] = 'admin/basisaturan';
 $route['tambahbasisaturan'] = 'admin/tambahbasisaturan';
 $route['riwayat'] = 'admin/riwayat';
+$route['cetakriwayat'] = 'admin/cetakriwayat';
+$route['profil'] = 'admin/profil';
 
 
 

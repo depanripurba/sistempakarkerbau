@@ -55,6 +55,11 @@ class Riwayat_model extends CI_Model
 		return $this->db->update('tbl_riwayat', $data);
 	}
 
+	public function hitung()
+	{
+		return $this->db->count_all('tbl_riwayat');
+	}
+
 	
 	
 	

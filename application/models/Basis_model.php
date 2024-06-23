@@ -55,6 +55,10 @@ class Basis_model extends CI_Model
 		$this->db->where('id', $_POST['id']);
 		return $this->db->update('tbl_basisaturan', $data);
 	}
+	public function hitung()
+	{
+		return $this->db->count_all('tbl_basisaturan');
+	}
 
 	
 	

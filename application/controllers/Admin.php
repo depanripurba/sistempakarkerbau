@@ -16,6 +16,7 @@ class Admin extends CI_Controller
 		$this->load->model('Gejala_model');
 		$this->load->model('Basis_model');
 		$this->load->model('Riwayat_model');
+		$this->load->model('Profil_model');
 	}
 
 
@@ -23,9 +24,13 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = "dashboard";
 		$data['aktif'] = "home";
+		$data['tgejala'] = $this->Gejala_model->hitung();
+		$data['tpenyakit'] = $this->Penyakit_model->hitung();
+		$data['tbaturan'] = $this->Basis_model->hitung();
+		$data['triwayat'] = $this->Riwayat_model->hitung();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/dashboard');
+		$this->load->view('admin/dashboard',$data);
 		$this->load->view('template/footer');
 		// }
 	}
@@ -230,6 +235,27 @@ class Admin extends CI_Controller
 		$this->load->view('admin/riwayat',$data);
 		$this->load->view('template/footer');
 		// }
+	}
+
+	public function cetakriwayat()
+	{
+		$this->load->library('pdf');
+        $this->pdf->set_option('isRemoteEnabled',true);  
+		$data['riwayat'] = $this->Riwayat_model->getAllData();
+        // $customPaper = array(0,0,700,700);
+        $this->pdf->setPaper('a4', 'landscape');
+        $this->pdf->filename = "laporanriwayat.pdf";
+        $this->pdf->load_view('admin/cetakriwayat',$data);
+	}
+	public function profil()
+	{
+		$data['judul'] = "Profil";
+		$data['aktif'] = "profil";
+		$data['admin'] = $this->Profil_model->getdata();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/profil',$data);
+		$this->load->view('template/footer');
 	}
 
 	public function buatpass()

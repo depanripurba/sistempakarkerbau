@@ -16,7 +16,8 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Total Data Gejala</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">3 Gejala</div>
+                                <div class="h5 mb-1 font-weight-bold text-gray-800"><?=$tgejala?> Gejala</div>
+                                <a href="<?=base_url('datagejala')?>">Detail</a>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,7 +35,8 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total Data Penyakit</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">3 Penyakit</div>
+                                <div class="h5 mb-1 font-weight-bold text-gray-800"><?=$tpenyakit?>  Penyakit</div>
+                                <a href="<?=base_url('datapenyakit')?>">Detail</a>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -54,7 +56,8 @@
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4 Rules</div>
+                                        <div class="h5 mb-1 mr-3 font-weight-bold text-gray-800"><?=$tbaturan?> Rules</div>
+                                        <a href="<?=base_url('basisaturan')?>">Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +77,8 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Total Data Riwayat Konsultasi</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                <div class="h5 mb-1 font-weight-bold text-gray-800"><?=$triwayat?> Konsultasi</div>
+                                <a href="<?=base_url('riwayat')?>">Detail</a>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
