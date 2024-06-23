@@ -71,6 +71,9 @@ $route['tambahbasisaturan'] = 'admin/tambahbasisaturan';
 $route['riwayat'] = 'admin/riwayat';
 $route['cetakriwayat'] = 'admin/cetakriwayat';
 $route['profil'] = 'admin/profil';
+$route['updateprofil'] = 'admin/updateprofil';
+$route['changepassword'] = 'admin/changepassword';
+$route['admin/deleteriwayat/(:any)'] = 'admin/deleteriwayat/$1';
 
 
 

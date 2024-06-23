@@ -30,7 +30,7 @@ class Admin extends CI_Controller
 		$data['triwayat'] = $this->Riwayat_model->hitung();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/dashboard',$data);
+		$this->load->view('admin/dashboard', $data);
 		$this->load->view('template/footer');
 		// }
 	}
@@ -112,6 +112,7 @@ class Admin extends CI_Controller
 		$this->load->view('template/footer');
 		// }
 	}
+
 	public function tambahdatapenyakit()
 	{
 		$data['judul'] = "Form Tambah Data Penyakit";
@@ -232,7 +233,7 @@ class Admin extends CI_Controller
 		$data['riwayat'] = $this->Riwayat_model->getAllData();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/riwayat',$data);
+		$this->load->view('admin/riwayat', $data);
 		$this->load->view('template/footer');
 		// }
 	}
@@ -240,12 +241,20 @@ class Admin extends CI_Controller
 	public function cetakriwayat()
 	{
 		$this->load->library('pdf');
-        $this->pdf->set_option('isRemoteEnabled',true);  
+		$this->pdf->set_option('isRemoteEnabled', true);
 		$data['riwayat'] = $this->Riwayat_model->getAllData();
-        // $customPaper = array(0,0,700,700);
-        $this->pdf->setPaper('a4', 'landscape');
-        $this->pdf->filename = "laporanriwayat.pdf";
-        $this->pdf->load_view('admin/cetakriwayat',$data);
+		// $customPaper = array(0,0,700,700);
+		$this->pdf->setPaper('a4', 'landscape');
+		$this->pdf->filename = "laporanriwayat.pdf";
+		$this->pdf->load_view('admin/cetakriwayat', $data);
+	}
+	public function deleteriwayat($id)
+	{
+		$cek = $this->Riwayat_model->hapusdata($id);
+		if ($cek) {
+			$this->session->set_flashdata('deleted', 'berhasil dihapus');
+			redirect(base_url('riwayat'));
+		}
 	}
 	public function profil()
 	{
@@ -254,8 +263,54 @@ class Admin extends CI_Controller
 		$data['admin'] = $this->Profil_model->getdata();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/menu', $data);
-		$this->load->view('admin/profil',$data);
+		$this->load->view('admin/profil', $data);
 		$this->load->view('template/footer');
+	}
+	public function updateprofil()
+	{
+		$data['judul'] = "Update Profil";
+		$data['aktif'] = "profil";
+		$data['admin'] = $this->Profil_model->getdata();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/updateprofil', $data);
+		$this->load->view('template/footer');
+	}
+	public function postupdateprofil()
+	{
+		$username = $this->input->post('username');
+		$nama = $this->input->post('nama');
+		$id = $this->input->post('id');
+		$url = $this->input->post('url');
+		// bagian harus ada input  gambar
+		if ($_FILES['gambar']["full_path"] != '') {
+			$ext = explode(".", $_FILES["gambar"]["full_path"]);;
+			$base64Gambar = $_FILES["gambar"]["tmp_name"];
+			$Path = "uploads/";
+			$ImagePath = $Path . $username . $this->input->post('username') . "." . $ext[1];
+			$url = base_url() . $ImagePath;
+			move_uploaded_file($base64Gambar, $ImagePath);
+		}
+		// bagian harus ada input gambar
+		$this->Profil_model->updatedata($id, $nama, $username, $url);
+		redirect(base_url('profil'), 'refresh');
+	}
+	public function changepassword()
+	{
+		$data['judul'] = "Change Password";
+		$data['aktif'] = "profil";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/menu', $data);
+		$this->load->view('admin/changepassword');
+		$this->load->view('template/footer');
+	}
+
+	public function postchangepass()
+	{
+		
+		$password =password_hash($this->input->post('password'), PASSWORD_DEFAULT) ;
+		$this->Profil_model->changepassword($password);
+		redirect(base_url('profil'), 'refresh');
 	}
 
 	public function buatpass()

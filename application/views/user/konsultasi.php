@@ -22,8 +22,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex justify-content-between">
         <h4 class="m-0 font-weight-bold text-primary">Halaman Konsultasi Pengunjung</h4>
+        <a class="btn btn-primary" href="<?=base_url()?>">Beranda</a>
     </nav>
     <center>
         <h5 class="text-success mb-3">Lengkapi Data Berikut</h5>

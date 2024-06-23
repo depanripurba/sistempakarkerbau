@@ -54,7 +54,7 @@
 
     </div>
     <center style="margin-top: 50px;">
-        <a class="btn btn-success text-white" href="">Konsultasi</a>
+        <a class="btn btn-success text-white" href="<?=base_url('konsultasi')?>">Konsultasi</a>
     </center>
 
     <!-- Bootstrap core JavaScript-->

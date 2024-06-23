@@ -30,7 +30,7 @@
                                 <td><?= $item->nama_penyakit ?></td>
                                 <td><?= $item->hasil_konsultasi ?></td>
                                 <td><?= $item->tanggal_konsultasi ?></td>
-                                <td style="width: 200px;"><button data-url="<?= base_url('deletegejala/' . $item->id) ?>" id="hapusdata" class="btn btn-danger">Delete</button> <a href="<?= base_url('editdatagejala/' . $item->id) ?>" class="btn btn-primary">Edit</a></td>
+                                <td style="width: 100px;"><button data-url="<?= base_url('admin/deleteriwayat/' . $item->id) ?>" id="hapusdata" class="btn btn-danger">Delete</button></td>
                             </tr>
                         <?php $nomor++ ?>
                         <?php endforeach ?>
