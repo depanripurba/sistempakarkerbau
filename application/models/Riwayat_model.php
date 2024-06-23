@@ -45,16 +45,6 @@ class Riwayat_model extends CI_Model
 		return $this->db->delete('tbl_riwayat', array('id' => $id));
 	}
 
-
-	public function updatedata()
-	{
-		$data = array(
-			'nilai' => $_POST['nilai'],
-		);
-		$this->db->where('id', $_POST['id']);
-		return $this->db->update('tbl_riwayat', $data);
-	}
-
 	public function hitung()
 	{
 		return $this->db->count_all('tbl_riwayat');
