@@ -35,17 +35,17 @@
                 <tr>
                     <td>Nama</td>
                     <td>:</td>
-                    <td>Depanri Purba</td>
+                    <td><?=$nama?></td>
                 </tr>
                 <tr>
                     <td>Nomor Hp</td>
                     <td>:</td>
-                    <td>081396486060</td>
+                    <td><?=$no_hp?></td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
                     <td>:</td>
-                    <td>081396486060</td>
+                    <td><?=$alamat?></td>
                 </tr>
             </tbody>
         </table>
@@ -107,7 +107,7 @@
     </div>
     <div class="d-flex flex-row justify-content-around">
         <a class="btn btn-primary" href="<?=base_url('konsultasi')?>">Konsultasi Kembali</a>
-        <a class="btn btn-danger" href="<?=base_url('generate')?>">Cetak</a>
+        <a class="btn btn-danger" target="_blank" href="<?=base_url('generate')?>">Cetak</a>
     </div>
     <div class="m-3"></div>
 

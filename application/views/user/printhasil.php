@@ -5,6 +5,7 @@ date_default_timezone_set('Asia/Jakarta');
 <html lang="en">
 
 <head>
+    <link rel="icon" href="<?= base_url('assets/img/icon.png') ?>" type="image/x-icon" />
     <title>Laporan Hasil Diagnosa</title>
     <style>
         .heading {
@@ -83,10 +84,10 @@ date_default_timezone_set('Asia/Jakarta');
                     <td><?= $_SESSION['hasildiagnosa']['nilaipeluang'] ?> || <?= $_SESSION['hasildiagnosa']['persenpeluang'] ?>%</td>
                 </tr>
                 <tr>
-                    <td>Solusi</td>
-                    <td>:</td>
-                    <td>
-                        <ul>
+                    <td valign="top">Solusi</td>
+                    <td valign="top">:</td>
+                    <td valign="top">
+                        <ul style="margin-top: -1px;margin-left:-10px">
                             <?php
                             $solusi = $_SESSION['hasildiagnosa']['solusi'];
                             $solusiArr = explode("-", $solusi);
@@ -107,7 +108,7 @@ date_default_timezone_set('Asia/Jakarta');
             <p>Medan, <?= date("j F, Y, H:i:s"); ?></p>
             <p style="margin-top: -15px;">Administrator</p>
             <br><br>
-            
+
             <p><b>(Drh. Lia Ayu Brutu)</b></p>
         </center>
     </div>

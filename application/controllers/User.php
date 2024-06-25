@@ -4,33 +4,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-	public function __construct()
-	{
-		parent::__construct();
-		// $this->load->model('Penyakit_model');
-		$this->load->model('Gejala_model');
-		$this->load->model('Riwayat_model');
-		// $this->load->model('Basis_model');
-		// 	$this->load->model('Pasien_model');
-	}
-
-	public function index()
-	{
-		$this->load->view('user/homeuser');
-	}
-	public function login()
-	{
-		$this->load->view('user/login');
-	}
-	public function konsultasi()
-	{
-		$data['gejala'] = $this->Gejala_model->getAllGejala();
-		$this->load->view('user/konsultasi',$data);
-	}
-
-	public function prosesdiagnosa()
+    public function __construct()
     {
-        if(isset($_SESSION['hasildiagnosa'])){
+        parent::__construct();
+        // $this->load->model('Penyakit_model');
+        $this->load->model('Gejala_model');
+        $this->load->model('Riwayat_model');
+        // $this->load->model('Basis_model');
+        // 	$this->load->model('Pasien_model');
+    }
+
+    public function index()
+    {
+        $this->load->view('user/homeuser');
+    }
+    public function login()
+    {
+        if (!$this->session->userdata('username') || !$this->session->userdata('nama')) {
+        } else {
+            redirect('admin');
+        }
+
+        $this->load->view('user/login');
+    }
+    public function konsultasi()
+    {
+        $data['gejala'] = $this->Gejala_model->getAllGejala();
+        $this->load->view('user/konsultasi', $data);
+    }
+
+    public function prosesdiagnosa()
+    {
+        if (isset($_SESSION['hasildiagnosa'])) {
+            $this->session->unset_userdata('hasildiagnosa');
             $this->session->unset_userdata('hasildiagnosa');
         }
         $newdata = [];
@@ -96,6 +102,7 @@ class User extends CI_Controller
         //mengambil gejala dari tabel gejala
         $sqll = "";
         $indi = 0;
+    
         foreach ($newdata as $gej => $v) {
             if ($indi >= count($newdata) - 1) {
                 $sqll .= "kode_gejala='" . $gej . "'";
@@ -104,10 +111,12 @@ class User extends CI_Controller
             }
             $indi++;
         }
+      
+
         $this->db->from('tbl_gejala');
         $this->db->where($sqll);
+        $this->db->order_by("kode_gejala", "asc");
         $gejalacentang = $this->db->get()->result();
-
         arsort($peluangpenyakit);
         $noresult = count($peluangpenyakit);
         if ($noresult == 0) {
@@ -124,7 +133,7 @@ class User extends CI_Controller
             $hasildiagnosakirim['namapenyakit'] = $ektrak->nama_penyakit;
             $hasildiagnosakirim['solusi'] = $ektrak->solusi;
             $hasildiagnosakirim['nilaipeluang'] = $values;
-            $hasildiagnosakirim['persenpeluang'] = $values*100;
+            $hasildiagnosakirim['persenpeluang'] = $values * 100;
             break;
         }
         $hasildiagnosakirim['gejalacentang'] = $gejalacentang;
@@ -141,21 +150,14 @@ class User extends CI_Controller
             }
             $inor++;
         }
-        $this->Riwayat_model->insertData($_POST['nama'],$_POST['no_hp'],$_POST['alamat'],$hasildiagnosakirim['namapenyakit'],$hasildiagnosakirim['nilaipeluang'],date('l, d-m-Y'));
-        
-        $this->session->set_userdata('hasildiagnosa', $hasildiagnosakirim);
+        $this->Riwayat_model->insertData($_POST['nama'], $_POST['no_hp'], $_POST['alamat'], $hasildiagnosakirim['namapenyakit'], $hasildiagnosakirim['nilaipeluang'], date('l, d-m-Y'));
 
-        // $propertiview['judul'] = 'SISTEM PAKAR DIAGNOSA ENDOKRIN - DIAGNOSA USER';
-        // $propertiview['aktif'] = 'Diagnosa Pasien';
+        $this->session->set_userdata('hasildiagnosa', $hasildiagnosakirim);
         $propertiview['hasil'] = $hasildiagnosakirim;
         $propertiview['nama'] = $_POST['nama'];
         $propertiview['no_hp'] = $_POST['no_hp'];
         $propertiview['alamat'] = $_POST['alamat'];
-        // $this->load->view('user/template/header', $propertiview);
-        // $this->load->view('user/template/sidebar', $propertiview);
-        // $this->load->view('user/hasildiagnosa', $propertiview);
-        // $this->load->view('user/template/footer', $propertiview);
-        $this->load->view('user/hasildiagnosa',$propertiview);
+        $this->load->view('user/hasildiagnosa', $propertiview);
     }
 
     private function forwadchaining($newdata)
@@ -191,6 +193,4 @@ class User extends CI_Controller
         }
         return $realprediksi;
     }
-
-	
 }
