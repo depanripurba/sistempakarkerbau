@@ -1,4 +1,4 @@
-<!-- Begin Page Content -->
+Begin Page Content -->
 <div class="container-fluid bg-red">
     <div class="card">
     <div class="card-header">
@@ -26,7 +26,9 @@
                             <td><?= $bas->kode_gejala ?></td>
                             <td><?= $bas->nama_gejala ?></td>
                             <td><?= $bas->nilai ?></td>
-                            <td style="width: 200px;"><button data-url="<?= base_url('deletebasis/' . $bas->id) ?>" id="hapusdata" class="btn btn-danger">Hapus</button> <a href="<?=base_url('editbasisaturan/'.$bas->id)?>" class="btn btn-primary">Edit</a></td>
+                            <td style="width: 100px;">
+                                <!-- <button data-url="<?= base_url('deletebasis/' . $bas->id) ?>" id="hapusdata" class="btn btn-danger">Hapus</button>  -->
+                                <a href="<?=base_url('editbasisaturan/'.$bas->id)?>" class="btn btn-primary">Edit</a></td>
                         </tr>
                         <?php $nomor++ ?>
                         <?php endforeach ?>
@@ -37,4 +39,4 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
+<!-- /.container-fluid
