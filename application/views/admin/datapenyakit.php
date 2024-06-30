@@ -1,4 +1,3 @@
-Begin Page Content -->
 <div class="container-fluid bg-red">
     <div class="card">
         <div class="card-header">
