@@ -29,7 +29,7 @@
             <a class="text-white" href="">Tentang</a> -->
         </div>
         <div class="p-3">
-            <a href="<?=base_url('konsultasi')?>" class="btn btn-success">Mulai Konsultasi</a>
+            <!-- <a href="<?=base_url('konsultasi')?>" class="btn btn-success">Mulai Konsultasi</a> -->
             <a href="<?=base_url('login')?>" class="btn btn-info">Admin Login</a>
         </div>
     </div>

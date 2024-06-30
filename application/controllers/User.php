@@ -46,7 +46,7 @@ class User extends CI_Controller
             }
         }
 
-        if (count($newdata) < 1) {
+        if (count($newdata) <= 3) {
             redirect('konsultasi');
         }
         //proses filterisasi
