@@ -1,4 +1,4 @@
-<!-- Begin Page Content -->
+Begin Page Content -->
 <div class="container-fluid bg-red">
     <div class="card">
         <div class="card-header">
@@ -32,8 +32,9 @@
                                         ?>
                                     </ul>
                                 </td>
-                                <td style="width: 200px;">
-                                    <button data-url="<?= base_url('deletepenyakit/' . $data->kode_penyakit) ?>" id="hapusdata" class="btn btn-danger">Delete</button> <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a>
+                                <td style="width: 100px;">
+                                    <!-- <button data-url="<?= base_url('deletepenyakit/' . $data->kode_penyakit) ?>" id="hapusdata" class="btn btn-danger">Delete</button>  -->
+                                    <a href="<?= base_url('editpenyakit/' . $data->kode_penyakit) ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -44,4 +45,4 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
+<!-- /.container-fluid
