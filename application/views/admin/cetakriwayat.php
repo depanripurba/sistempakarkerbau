@@ -3,6 +3,7 @@ date_default_timezone_set('Asia/Jakarta');
 ?>
 
 <head>
+<link rel="icon" href="<?=base_url('assets/img/icon.png')?>" type="image/x-icon" />
     <style>
         table tr td {
             padding: 7;

@@ -12,13 +12,7 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-        // echo "tes";
-        // die;
-		// Jika tidak ada user yang berhasil login, kembalikan ke halaman login
-		// if ($this->session->userdata('username')) {
-		// 	redirect('admin');
-		// }
-
+	
 		// Rules Validation
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -35,7 +29,7 @@ class Login extends CI_Controller
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		if($username==='' || $password===''){
+		if ($username === '' || $password === '') {
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-danger" role="alert">
 				Anda Belum Mengisi Form
@@ -59,7 +53,7 @@ class Login extends CI_Controller
 					'nama' => $login['nama']
 				];
 				$this->session->set_userdata($data);
-			redirect('admin');
+				redirect('admin');
 			} else {
 				// Jika Password Salah
 				$this->session->set_flashdata('message', '
