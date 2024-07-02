@@ -56,6 +56,7 @@
                     <div class="card-header">
                         <h6 class="m-0 font-weight-bold text-primary">Ceklis Gejala yang dialami</h6>
                     </div>
+                    <?=$this->session->flashdata('message');?>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tbody>

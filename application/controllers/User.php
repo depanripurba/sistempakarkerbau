@@ -47,6 +47,7 @@ class User extends CI_Controller
         }
 
         if (count($newdata) <= 3) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wajib Memilih minimal 4 gejala</div>');
             redirect('konsultasi');
         }
         //proses filterisasi
@@ -102,7 +103,7 @@ class User extends CI_Controller
         //mengambil gejala dari tabel gejala
         $sqll = "";
         $indi = 0;
-    
+
         foreach ($newdata as $gej => $v) {
             if ($indi >= count($newdata) - 1) {
                 $sqll .= "kode_gejala='" . $gej . "'";
@@ -111,7 +112,7 @@ class User extends CI_Controller
             }
             $indi++;
         }
-      
+
 
         $this->db->from('tbl_gejala');
         $this->db->where($sqll);
