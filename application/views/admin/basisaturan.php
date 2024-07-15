@@ -1,8 +1,8 @@
 <div class="container-fluid bg-red">
     <div class="card">
-    <div class="card-header">
+    <!-- <div class="card-header">
             <a href="<?=base_url('tambahbasisaturan')?>" class="btn btn-primary">Tambah</a>
-        </div>
+        </div> -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered"  width="100%" cellspacing="0">
